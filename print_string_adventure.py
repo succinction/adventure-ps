@@ -13,8 +13,8 @@
 # Screen
 # Monster
 # Player
-# #SpellBook
-# #Engine
+# # SpellBook
+# # Engine
 
 
 
@@ -24,6 +24,25 @@
 from random import choice
 from random import randrange
 
+
+MAP_SIZE = 24
+LIVES = [4]
+
+# IF MODE == ROAM: MOVE
+# IF MODE == FIGHT: ATTACK HERO
+monster_modes = ['ROAM', 'FIGHT']
+
+# monster_mode = monster_modes[0]
+
+this_monster = [0]
+
+level = [1]
+
+# initialize
+def generate_monster():
+    player.level += 1
+    level[0] += 1
+    monsters.append(Monster(level[0]))
 
 ##################################################################
 
@@ -73,7 +92,7 @@ class Screen:
             maprws.append(self.map_row)
         return maprws
 
-
+    # MESSAGING
     def message(self, x, additional=''):
         return {
                    'cast': 'Magic spell cast, doing some damage.',
@@ -87,9 +106,13 @@ class Screen:
                    'g7': 'Gained 7 Gold.',
                    'g5': 'Gained 5 Gold.',
                    'g1': 'Gained 1 Gold.',
+
+# this_monster[0]
                    'm1': 'Fight monster: {} with {}({}) HP:{} '
-                       .format(monsters[0].type, monsters[0].inventory[0]['name'],
-                               monsters[0].inventory[0]['damage'], monsters[0].health),
+                       .format(monsters[this_monster[0]].type, monsters[this_monster[0]].inventory[0]['name'],
+                               monsters[this_monster[0]].inventory[0]['damage'], monsters[this_monster[0]].health),
+
+
                    '.': 'Nothing to say.',
                    '': '',
                    'killedit': 'You have slain the monster!',
@@ -98,8 +121,22 @@ class Screen:
                }[x] + additional
 
     # PSMAPIT > SCREEN
+    # MESSAGING
     # STATS
     def hud(self):
+        print("################################################# ")
+        print("# This is the space for the story ")
+        print("#  ")
+        print("#  ")
+        print("#  ")
+        print("#  ")
+        print("#  ")
+        print("#  ")
+        print("#  ")
+        print("#  ")
+        print("#  ")
+        print("################################################# ")
+
         print("LEFT : {} {}  HEALTH: {}  {}".format(player.inventory[0]['name'], player.inventory[0]['damage'],
                                                     player.health,
                                                     self.message(self.message_key[2][:3],
@@ -177,18 +214,18 @@ class Screen:
         row = player.current_position[0]
         self.header()
         ind = self.MAP_SIZE - row
+
+
         ### MONSTER
-        m = 0
-        mon_row = monsters[m].position[0]
-        # print('monsters position 0 : ' , monsters[m].position[0])
-        # print('monsters position 1 : ' , monsters[m].position[1])
-        mon_col = monsters[m].position[1]
-        # mon_ind = MAP_SIZE - mon_row
-        mon_colm = mon_col
-        newrow = self.map_rows[mon_row][: (mon_colm - 1) * 2]
-        newrow += monsters[m].avatar
-        newrow += self.map_rows[mon_row][(mon_colm) * 2:]
-        self.map_rows[mon_row] = newrow
+        for m in range(2):
+            mon_row = monsters[m].position[0]
+            mon_col = monsters[m].position[1]
+            mon_colm = mon_col
+            newrow = self.map_rows[mon_row][: (mon_colm - 1) * 2]
+            newrow += monsters[m].avatar
+            newrow += self.map_rows[mon_row][(mon_colm) * 2:]
+            self.map_rows[mon_row] = newrow
+
         for r in range(row):
             print(self.map_rows[r], r)
         colm = self.get_index_from_bit(col)
@@ -241,18 +278,14 @@ class Screen:
 
 class Monster:
     def __init__(self, lvl ):
+        self.mode = monster_modes[0]
         self.level = lvl
         self.m_typ = self.m_type()
-        # self.posr = randrange(2, 20)
-        # self.posc = randrange(2, 20)
-        # self.position = [self.posr, self.posc],
         self.position = [randrange(2, 20), randrange(2, 20)]
         self.type = self.m_typ[0]
         self.avatar = self.m_typ[1]
         self.biom = self.m_typ[2]
-        # self.level = self.level,
         self.health = 100 * lvl
-
         self.inventory= [
                         {'type': 'weapon',
                           'name': self.w_name(),
@@ -334,29 +367,16 @@ class Player:
 # ENGINE
 
 
-MAP_SIZE = 24
-LIVES = [3]
-
-# monsters = [Monster(1), Monster(1)]
-monsters = [Monster(1)]
-
-level = [1]
-
-# initialize
-def generate_monster():
-    player.level += 1
-    level[0] += 1
-    monsters.append(Monster(level[0]))
 
 
-
-player = Player()
-
-screen = Screen()
 
 # ENGINE
 def reincarnate():
-    print("Killed by level {} {}.    Don't forget to heal!".format(level[0], monsters[0].type))
+
+
+    # this_monster[0]
+
+    print("Killed by level {} {}.    Don't forget to heal!".format(level[0], monsters[this_monster[0]].type))
     print("################################################## ")
     print("################################################## ")
     print("################################################## ")
@@ -393,7 +413,7 @@ def reincarnate():
     screen.mapit()
     #
 
-# GAME ENGINE ? MECHANICS
+
 def monster_move(mm=0):
     m = mm
     # for m in range(2):
@@ -424,25 +444,28 @@ def monster_move(mm=0):
     screen.map_rows[mon_row] = newrow
     ##############################################
 
-# ENGINE
+
 def check_proximity(arg=2):
-    if abs(monsters[0].position[0] - player.current_position[0]) < arg and arg > abs(
-                    monsters[0].position[1] - screen.get_index_from_bit(player.current_position[1])):
-        return True
+
+    for m in range(2):
+        if abs(monsters[m].position[0] - player.current_position[0]) < arg and arg > abs(
+                    monsters[m].position[1] - screen.get_index_from_bit(player.current_position[1])):
+            this_monster[0] = m
+            return True
     return False
 
-# ENGINE
+
 def check_death(arg):
     if arg < 0:
         return True
     return False
 
-# ENGINE
+
 def game_over(win):
     if win:
         screen.head[0] = 4
-        m0 = monsters[0].position[0]
-        m1 = monsters[0].position[1]
+        m0 = monsters[this_monster[0]].position[0]
+        m1 = monsters[this_monster[0]].position[1]
         new_row = screen.map_rows[m0][:(m1 - 1) * 2]
         new_row += ' x'
         new_row += screen.map_rows[m0][m1 * 2:]
@@ -451,7 +474,7 @@ def game_over(win):
         screen.map_rows[m0] = new_row
 
         # determine which monster
-        z = monsters.pop()
+        z = monsters.pop(this_monster[0])
         generate_monster()
     else:
         LIVES[0] -= 1
@@ -462,76 +485,89 @@ def game_over(win):
             screen.header()
             quit()
 
-# ENGINE
-def monster_attack():
 
-    v = monsters[0].inventory[0]['damage'] - player.inventory[1]['block']
+def monster_attack(m):
+
+    v = monsters[m].inventory[0]['damage'] - player.inventory[1]['block']
     player.health -= v
 
     if check_death(player.health):
         game_over(False)
-    screen.message_key[2] = 'dmg ' + str(monsters[0].inventory[0]['damage'])
+    screen.message_key[2] = 'dmg ' + str(monsters[m].inventory[0]['damage'])
 
 
 ########################################################################################################################
 
-
-# ENGNINE
+# this_monster[0]
 def player_attack(arg):
     print(arg)
     # if check_proximity():
     if arg == 'kill':
-        monsters[0].health = monsters[0].health - (player.inventory[0]['damage'] * 10)
+        monsters[this_monster[0]].health = monsters[this_monster[0]].health - (player.inventory[0]['damage'] * 10)
         screen.head[0] = 2
     elif arg.lower() == 'zero':
-        monsters[0].health = 0
+        monsters[this_monster[0]].health = 0
         screen.head[0] = 2
     elif arg.lower() == 'zork':
-        monsters[0].health = monsters[0].health - (player.inventory[0]['damage'] * 90)
+        monsters[this_monster[0]].health = monsters[this_monster[0]].health - (player.inventory[0]['damage'] * 90)
         screen.head[0] = 2
     else:
-        print('monsters[0].health : ',monsters[0].health)
-        monsters[0].health -= int(player.inventory[0]['damage'] + (player.gold * .01))  - monsters[0].inventory[1]['block']
-    if check_death(monsters[0].health):
+        # print('monsters[0].health : ',monsters[0].health)
+        monsters[this_monster[0]].health -= int(player.inventory[0]['damage'] +
+                                                (player.gold * .01))  - monsters[this_monster[0]].inventory[1]['block']
+    if check_death(monsters[this_monster[0]].health):
         game_over(True)
-
-
-
-
     monster_go()
     screen.mapit()
 
 
-# IF MODE == ROAM: MOVE
-# IF MODE == FIGHT: ATTACK HERO
-monster_modes = ['ROAM', 'FIGHT']
-monster_mode = monster_modes[0]
+
 
 # ENGINE
 def monster_go():
-    proximity = check_proximity()
-    if proximity:
-        monster_mode = monster_modes[1]
-    else:
-        monster_mode = monster_modes[0]
-    if monster_mode == 'ROAM':
-        screen.head[0] = 0
-        monster_move()
-        # FIX FOR SLAIN
-        screen.message_key[1] = ''
-        screen.message_key[2] = ''
-    elif monster_mode == 'FIGHT':
-        screen.message_key[1] = 'm1'
-        screen.head[0] = 2
-        monster_attack()
+    for m in range(2):
+        arg = 2
+        if abs(monsters[m].position[0] - player.current_position[0]) < arg and arg > abs(
+                    monsters[m].position[1] - screen.get_index_from_bit(player.current_position[1])):
+            monsters[m].mode = monster_modes[1]
+        else:
+            monsters[m].mode = monster_modes[0]
+
+        if monsters[m].mode == 'ROAM':
+            screen.head[0] = 0
+
+            monster_move(m)
+            # if screen.message_key[1] != 'm1':
+            screen.message_key[1] = ''
+            screen.message_key[2] = ''
+        elif monsters[m].mode == 'FIGHT':
+
+            screen.message_key[1] = 'm1'
+            screen.head[0] = 2
+
+            this_monster[0] = m
+            monster_attack(m)
 
 
 
 # ENGINE
+#jh
+# monsters = [Monster(1)]
+# if __name__ == "__main__":
 
+
+monsters = [Monster(1), Monster(1)]
+player = Player()
+screen = Screen()
 screen.mapit()
+
+
+
 # CALCULATE TRANSLATION OF current_position
 def move(arg):
+
+
+
     # print("move arg: ", arg)
     if arg == 2:  # 'n'
         if player.current_position[0] > 0:
@@ -581,7 +617,8 @@ def move(arg):
         # move(9)
     monster_go()
     # header(0)
-    screen.mapit(player.current_position[0], player.current_position[1])
+    # screen.mapit(player.current_position[0], player.current_position[1])
+    screen.mapit()
 
 
 ########################################################################
@@ -623,6 +660,12 @@ def cast_spell(spell=''):
         player.gold -= 30
         if check_proximity(3):
             player_attack(spell)
+
+    elif spell == 'live' and player.gold > 1000:
+        player.gold -= 1000
+        LIVES[0] += 1
+        # player_attack()
+
     else:
         if check_proximity():
             player_attack(spell)
@@ -680,31 +723,3 @@ while True:
             elif command[i] == '9' or 'd' == command[i]:
                 move(9)
 
-            # NEXT:
-# Multiple MONSTERs
-#
-# 
-##################################################################
-
-
-
-    ########################################
-    # STRING TEMPLATES
-
-
-
-
-    # def __init__(self, make, model, year, color):
-    #     self.model = model
-    #     self.make = make
-    #     self.year = year
-    #     self.color = color
-    #
-    # def __str__(self):
-    #     return '{}, {}, {}, {}'.format(self.make,
-    #                                    self.model,
-    #                                    self.year,
-    #                                    self.color)
-    #
-    # def __repr__(self):
-    #     return '{} {}'.format(self.color, self.model)
