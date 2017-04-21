@@ -260,11 +260,12 @@ class Map:
         if x == 5:
             mp = []
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . . . . . . . # . . . # . . . . . #")
-            mp.append(" . . . . . . . . . . . . . # . X . # . . . . . #")
-            mp.append(" . . . . . . . . . . . . . # . X . # . . . . . #")
-            mp.append(" . . . . . . . . . . . . . # # # # # . . . . . #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
+            mp.append(" . . . . . . . . . . . . . . . . . # . . . . . #")
             mp.append(" . . . . . . . # # # # # . # # # # # . . . . . #")
             mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
             mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
@@ -273,14 +274,13 @@ class Map:
             mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
             mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
             mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . . . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
             mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
             mp.append(" . . . . . . . # # # # # # # # # . # . . . . . #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
+            mp.append(" . . . . . . . . . . . . . # . . . # . . . . . #")
+            mp.append(" . . . . . . . . . . . . . # . X . # . . . . . #")
+            mp.append(" . . . . . . . . . . . . . # . X . # . . . . . #")
+            mp.append(" . . . . . . . . . . . . . # # # # # . . . . . #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
 
@@ -520,26 +520,6 @@ class Map:
         '''
         # print("################################################# ")
         #
-        # print("# ")
-        # print("# ")
-        # print("# ")
-        # print("# ")
-        # print("# ")
-        # print("# ")
-        # print("# ")
-        # print("# ")
-        # print("# ")
-        # print("# ")
-        # print("# {}".format())
-        # print("# {}".format())
-        # print("# {}".format())
-        # print("# {}".format())
-        # print("# {}".format())
-        # print("# {}".format())
-        # print("# {}".format())
-        # print("# {}".format())
-        # print("# {}".format())
-        # print("# {}".format())
 
         print("################################################# ")
 
@@ -567,14 +547,14 @@ class Map:
             'opening': "",
             'middle': "",
             'ending': "",
-
+            '':''
         }[X]
 
     def header(self, player={}):
         '''PRINTS HEADER'''
         # print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
 
-        story_line(self.message_key[3])
+        print(self.story_line(self.message_key[3]))
 
         self.frame_i[0] += 1
         print('Frame # {}  Level # {}   Lives : {} '.format(self.frame_i[0], self.level_fn(), self.get_lives()))
@@ -704,6 +684,18 @@ class Map:
             print(self.maps[self.current_map[0]][self.current_map[1]][row + x], row + x)
         self.hud(player)
 
+    def cleanse_map(self, monsters):
+        # REMOVE MONSTERS BEFOR SWITCHING MAPS:
+
+        for m in range(len(monsters)):
+            mon_row = monsters[m].position[0]
+            mon_col = monsters[m].position[1]
+            mon_colm = mon_col
+            newrow = self.maps[self.current_map[0]][self.current_map[1]][mon_row][: (mon_colm - 1) * 2]
+            newrow += " ."
+            newrow += self.maps[self.current_map[0]][self.current_map[1]][mon_row][(mon_colm) * 2:]
+            self.maps[self.current_map[0]][self.current_map[1]][mon_row] = newrow
+
 
 
         # CALCULATE TRANSLATION OF position
@@ -733,6 +725,8 @@ class Map:
                     # player.position[1] = player.position[1]
             else:
 
+                self.cleanse_map(monsters)
+
                 self.current_map[0] += -1
                 player.position[0] = self.MAP_SIZE - 1
 
@@ -753,6 +747,7 @@ class Map:
                     player.position[0] = player.position[0] + 1
                     # player.position[1] = player.position[1]
             else:
+                self.cleanse_map(monsters)
                 self.current_map[0] += 1
                 player.position[0] = (player.position[0] + 1) % 24
         # CHANGE MAP
@@ -771,6 +766,7 @@ class Map:
             # player.position[0] = player.position[0]
 
             else:
+                self.cleanse_map(monsters)
                 self.current_map[1] += 1
                 player.position[1] = 1
 
@@ -792,6 +788,7 @@ class Map:
             # move(4)
 
             else:
+                self.cleanse_map(monsters)
                 self.current_map[1] += -1
                 player.position[1] = 24
 
@@ -899,19 +896,20 @@ print("########## HEAL WITH \"h [number]\" + ENTER ######## ")
 print("################################################## ")
 print(" LEARN TO CAST SPELLS WITH \"cast [spell]\" + ENTER  ")
 print("################################################## ")
-print("#### SPELLS WILL BE REVEALED AS YOU LEVEL UP ##### ")
+print("# SPELLS:>>> heal 99  heals 99 costs 99 gold ##### ")
+print("# SPELLS:>>> cast live  adds 1 life costs 1000 gold")
 print("################################################## ")
-print("################################################## ")
-print("################################################## ")
-print("################################################## ")
+print("# ATTACK SPELLS ################################## ")
+print("# SPELLS:>>> cast death ########################## ")
+print("# SPELLS:>>> t zero    ########################### ")
 print("################################################## ")
 print("################################################## ")
 
 
-class MonSteR(Monster):
+class MonSteR:
 # class MonSteR:
     def __init__(self, lvl ):
-        Monster.__init__(self)
+        # Monster.__init__(self)
         self.mode = monster_modes[0]
         self.level = lvl
         self.m_typ = self.m_type()
@@ -998,7 +996,6 @@ class MonSteR(Monster):
 class Player:
     def __init__(self, health=100, gold=5, name='Zork', lvl=1, init_position=[12, 12]):
         self.position = init_position
-        # self.position = [10, 1024]
         self.name = name
         self.health = health     #100
         self.gold = gold         #5
@@ -1124,8 +1121,8 @@ def cast_spell(spell=''):
         if check_proximity(5):
             player_attack(spell)
 
-    elif spell[:6] == 'orange' and player.gold > 10:
-        player.gold -= 10
+    elif spell[:6] == 'gold' and player.gold < 1000:
+        player.gold += 1000
         if check_proximity(9):
             player_attack(spell)
 
