@@ -125,16 +125,28 @@ class Screen:
     # STATS
     def hud(self):
         print("################################################# ")
-        print("# This is the space for the story ")
-        print("#  ")
-        print("#  ")
-        print("#  ")
-        print("#  ")
-        print("#  ")
-        print("#  ")
-        print("#  ")
-        print("#  ")
-        print("#  ")
+
+        print("# ")
+        print("# ")
+        print("# ")
+        print("# ")
+        print("# ")
+        print("# ")
+        print("# ")
+        print("# ")
+        print("# ")
+        print("# ")
+        # print("# {}".format())
+        # print("# {}".format())
+        # print("# {}".format())
+        # print("# {}".format())
+        # print("# {}".format())
+        # print("# {}".format())
+        # print("# {}".format())
+        # print("# {}".format())
+        # print("# {}".format())
+        # print("# {}".format())
+
         print("################################################# ")
 
         print("LEFT : {} {}  HEALTH: {}  {}".format(player.inventory[0]['name'], player.inventory[0]['damage'],
@@ -487,10 +499,8 @@ def game_over(win):
 
 
 def monster_attack(m):
-
     v = monsters[m].inventory[0]['damage'] - player.inventory[1]['block']
     player.health -= v
-
     if check_death(player.health):
         game_over(False)
     screen.message_key[2] = 'dmg ' + str(monsters[m].inventory[0]['damage'])
@@ -512,7 +522,6 @@ def player_attack(arg):
         monsters[this_monster[0]].health = monsters[this_monster[0]].health - (player.inventory[0]['damage'] * 90)
         screen.head[0] = 2
     else:
-        # print('monsters[0].health : ',monsters[0].health)
         monsters[this_monster[0]].health -= int(player.inventory[0]['damage'] +
                                                 (player.gold * .01))  - monsters[this_monster[0]].inventory[1]['block']
     if check_death(monsters[this_monster[0]].health):
@@ -523,7 +532,8 @@ def player_attack(arg):
 
 
 
-# ENGINE
+
+
 def monster_go():
     for m in range(2):
         arg = 2
@@ -550,6 +560,8 @@ def monster_go():
 
 
 
+
+
 # ENGINE
 #jh
 # monsters = [Monster(1)]
@@ -563,11 +575,10 @@ screen.mapit()
 
 
 
+
 # CALCULATE TRANSLATION OF current_position
 def move(arg):
-
-
-
+    # INSERT CONDITIONALS FOR WALL ENCOUNTERS
     # print("move arg: ", arg)
     if arg == 2:  # 'n'
         if player.current_position[0] > 0:
