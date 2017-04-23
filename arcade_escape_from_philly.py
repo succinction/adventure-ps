@@ -21,10 +21,11 @@ class Map:
         789
     '''
 
-    def __init__(self, player, monsters, ma_fn_ref, lvl_fn_ref, get_lives_fn, get_mon_fn):
+    def __init__(self, player, monsters, ma_fn_ref, lvl_fn_ref, get_lives_fn, get_mon_fn, getplayer_fn):
         '''INITIALIZE VARIALBES'''
         self.player = player
         self.monsters = monsters
+        self.get_player = getplayer_fn
 
         self.monster_attack = ma_fn_ref
         self.level_fn = lvl_fn_ref
@@ -70,10 +71,10 @@ class Map:
             mp = []
             mp.append(" # # # # # # # # # # # # # # # # # # # # # # # #")
             mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . . . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . ; ; ; . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . ; X . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . ; X ; . . . . . . . . . . . . . . . . . . .")
+            mp.append(" # . ; ; ; . . . . # . . . . . . . . . . . . . .")
             mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
             mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
             mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
@@ -84,54 +85,54 @@ class Map:
             mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
             mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
             mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . . . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # # # # . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" . . . # . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . . # . . . . . . . . . . . . . . . . . . . .")
+            mp.append(" # . . # . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . . # . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" # . . # . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" # . . # . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" # . . # . . . . . # . . . . . . . . . . . . . .")
 
         if x == 3:
             mp = []
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . . . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . # # # . # # .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . . . ; * ; ; .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . ; * ; ; .")
-            mp.append(" # . . . . . . . . . . . * * . . . # . ; * ; ; .")
-            mp.append(" # . . . . . . # . . . . * * . . . # . * * * * .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . * * * * .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . * * * * .")
-            mp.append(" # # # . # # # # . . . . . . . . . # . * * * * .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . * * * * .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . * * * * .")
-            mp.append(" # . . . . . . . . . . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . . . . . . . . . . . . . . . .")
+            mp.append(" # . . # . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . . # . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . . # . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . . # . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . . # . . . . . . . . . . . . . . . . . . . .")
+            mp.append(" # . . # . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . # # # # # # # # # # # # # . # # . . . . . .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" # . # . . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . # . . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . # . . . . # . . . . . . . . . # # # . # # .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" # . # . . . . # . . . . . . . . . . . ; * ; ; .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . ; * ; ; .")
+            mp.append(" # . # . . . . . . . . . * * . . . # . ; * ; ; .")
+            mp.append(" # . # . . . . # . . . . * * . . . # . * * * * .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . * * * * .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . * * * * .")
+            mp.append(" # . # . # # # # . . . . . . . . . # . * * * * .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . * * * * .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . * * * * .")
+            mp.append(" # . # # . . . . . . . . . . . . . . . . . . . .")
+            mp.append(" # . . # . . . . . . . . . . . . . . . . . . . .")
 
         elif x == 6:
             mp = []
-            mp.append(" # . . . . . . . . . . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . . . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . # . . . . . . . . . . . . . . . . . . . . .")
+            mp.append(" # . # . . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . # . . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . # . . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . # . . . . . . . . . . . . . . . . . . . . .")
+            mp.append(" # . # . . . . . . # . . . . . . . . . . . . . .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" # . # . . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" # . # . . . . . . # . . . . . . . . . . . . . .")
             mp.append(" # # # # # # # # # # # # # # # . # # . . . . . .")
             mp.append(" # . . . . . . # . . . . . . . . . # # # . # # .")
             mp.append(" # . . . . . . # . . # . . . . . . # . . . . . .")
@@ -211,9 +212,6 @@ class Map:
             mp.append(" . . . . . . . . . # . . . . . . . . . . . . . .")
             mp.append(" . . . . . . . . . # . . . . . . . . . . . . . .")
             mp.append(" . . . . . . . # # # # # # . # # # # . . . . . .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
             mp.append(" . . . . . . . # . . . . . . . . . # # # # # # .")
             mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
             mp.append(" . . . . . . . # . . . . . . . . . # . ; * ; ; .")
@@ -225,6 +223,9 @@ class Map:
             mp.append(" # # # # # # # # . . . . . . . . . # . * * * * .")
             mp.append(" . . . . . . . # . . . . . . . . . # . * * * * .")
             mp.append(" . . . . . . . # # # # # . # # # # # . * * * * .")
+            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
+            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . .")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . .")
             mp.append(" # # # # # # # # # # # # # # # # # # # # # # # #")
@@ -246,9 +247,9 @@ class Map:
             mp.append(" . . . . . . . . . . # # . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . # . . . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . . # . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . . # . . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
+            mp.append(" . . . . . . . . # . . . . . . . . . # # # # # #")
+            mp.append(" . . . . . . . . . . . . . . . . . . # X X X X #")
+            mp.append(" . . . . . . . . . . . . . . . . . . # X X X X #")
             mp.append(" # # # # # # # # # # # # # # # # # # # # # # # #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
@@ -261,26 +262,26 @@ class Map:
             mp = []
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . . . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # # # # # . # # # # # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # # # # # # # # # . # . . . . . #")
+            mp.append(" . # . . . . . . . . . # . . . . . . . . . . . #")
+            mp.append(" . # . . . x . . . . . # . . . . . . . . . . . #")
+            mp.append(" . # . . . . . x . x . # . . . . . . . . . . . #")
+            mp.append(" . # . . . . . . . . . # . . . . . . . . . . . #")
+            mp.append(" . . . . . . . . . . . # . . . . . . . . . . . #")
+            mp.append(" . # # # # # . # # # # # . . . . . . . . . . . #")
+            mp.append(" . # . . . . . . . . . # . . . . . . . . . . . #")
+            mp.append(" . # . . . . . . . . . # . . . . . . . . . . . #")
+            mp.append(" . # . . . x . . . . . # . . . . . . . . . . X #")
+            mp.append(" . # . . . . . . . . . # . . . . . . . . . . . #")
+            mp.append(" . # . . . . x . . . . # . . . . . . . . . . . #")
+            mp.append(" . # . . . . . . . x . # . . . . . . . . . . . #")
+            mp.append(" . # . . . . . . . . . # . . . . . . . . . . . #")
+            mp.append(" . # . . . . . x . . . # . . . . . . . . . . . #")
+            mp.append(" . # # # # # # # # # . # . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . . . . . . . # . . . # . . . . . #")
-            mp.append(" . . . . . . . . . . . . . # . X . # . . . . . #")
-            mp.append(" . . . . . . . . . . . . . # . X . # . . . . . #")
-            mp.append(" . . . . . . . . . . . . . # # # # # . . . . . #")
+            mp.append(" . . . . . . . # . . . # . . . . . . . . . . . #")
+            mp.append(" . . . . . . . # . X . # . . . . . . . . . . . #")
+            mp.append(" . . . . . . . # . X . # . . . . . . . . . . . #")
+            mp.append(" . . . . . . . # # # # # . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
 
@@ -292,31 +293,27 @@ class Map:
             mp.append(" . . . . . . . . . # . . . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . # . . . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . # . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . # # # # # # # # # # # . . . . . #")
             mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
+            mp.append(" . . . . . . . # # # # # # # # # # # . . . . . #")
             mp.append(" . . . . . . . # . . . . . . . . . # . . X . . #")
             mp.append(" . . . . . . . # . . . . . . # . . # . . . . . #")
             mp.append(" . . . . . . . # . . . . . . # . . # # # # # # #")
             mp.append(" . . . . . . . # . . . . . . # . . # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . # X . # . ; * ; ; #")
-            mp.append(" . . . . . . . # # # # # # . # # # # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . # X . # . ; * ; ; #")
-            mp.append(" . . . * * * * # . . . . . . # . . # . ; * ; ; #")
-            mp.append(" . . . * * * * # . . . . . . # . . # . X X X X #")
-            mp.append(" . . . * * * * # . . . . . . . . . # . X X X X #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . X X X X #")
-            mp.append(" # # # # # # # # . . . . . . . . . # . X X X X #")
+            mp.append(" . . . . . . . # . . . . . . # X . # . x x x x .")
+            mp.append(" . . . . . . . # # # # # # . # # # # . x x x x #")
+            mp.append(" . . . . . . . # . . . . . . # X . # . x x x x #")
+            mp.append(" . . . * * * * # . . . . . . # . . # . x x x x #")
+            mp.append(" . . . * * * * # . . . . . . # . . # . x x x x #")
+            mp.append(" . . . * * * * # . . . . . . . . . # . x x x x #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . x x x x #")
+            mp.append(" # # # # # # # # . . . . . . . . . # . x x x x #")
             mp.append(" . . . . # . . # . . . . . . . . . # . * * * * #")
             mp.append(" . . X X # . . # # # # # . # # # # # . * * * * #")
             mp.append(" . . . . # . . . . . . . . . . . . . . . . . . #")
-            mp.append(" # # # # # # # # # # # # # # # # # # # # # # # #")
+            mp.append(" # # # # # . # # # # # # # # # # # # # # # # # #")
 
         return mp
 
-        # maprws = []
-        # for r in range(self.MAP_SIZE):
-        #     maprws.append(self.map_row)
-        # return maprws
 
     def reincarnate(self, player, monsters):
         """FOR WHEN PLAYER DIES BUT HAS MORE LIVES"""
@@ -444,10 +441,73 @@ class Map:
             monsters[m].position[0] += rand_horizontal
             monsters[m].position[1] += rand_verticle
 
-        # try:
-        newrow = self.maps[self.current_map[0]][self.current_map[1]][mon_row][: (mon_colm - 1) * 2]
-        # except IndexError:
-        #     pass
+        try:
+            newrow = self.maps[self.current_map[0]][self.current_map[1]][mon_row][: (mon_colm - 1) * 2]
+        except IndexError:
+
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("################################################## ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("###    YOU HAVE ESCAPED FROM PHILADELPHIA !   #### ")
+            print("################################################## ")
+            print("################################################## ")
+            yes = input("CONTINUE ? >>>")
+            # MAP 1:1
+            # PLAYER POSITION 12,12
+            # mapit
+            player = self.get_player()
+            self.current_map[0] = 1
+            self.current_map[1] = 1
+            self.player.position[0] = 12
+            self.player.position[1] = 12
+            self.head[0] = 5
+            self.mapit(player, monsters)
+            return
+
         #
         ##### THIS IS THE TEST: ######################
         # terr = self.maps[self.current_map[0]][self.current_map[1]][mon_row][(monsters[m].position[1] - 1) * 2: ((monsters[m].position[1] - 1) * 2) + 2]
@@ -498,8 +558,9 @@ class Map:
                    'g5': 'Gained 5 Gold.',
                    'g1': 'Gained 1 Gold.',
 
-                   'm1': 'Fight Monster with {}({}) HP:{} '
-                       .format(self.get_monsters()[self.this_monster[0]].inventory[0]['name'],
+                   'm1': '{} with {}({}) HP:{} '
+                       .format(self.get_monsters()[self.this_monster[0]].type.title(),
+                               self.get_monsters()[self.this_monster[0]].inventory[0]['name'],
                                self.get_monsters()[self.this_monster[0]].inventory[0]['damage'],
                                self.get_monsters()[self.this_monster[0]].health),
 
@@ -563,7 +624,7 @@ class Map:
             print("########################################: 123 | 123")
             print("##     ESCAPE FROM PHILADELPHIA    ###### q*e | 4*6")
             print("######################################### asd | 789")
-            print(self.get_monsters()[self.this_monster[0]].type)
+            print("Confront " + self.get_monsters()[self.this_monster[0]].long_description)
             print("##################### MAP{}:{} ##################### ".format(self.current_map[0],
                                                                                  self.current_map[1]))
         elif self.head[0] == 1:
@@ -573,7 +634,7 @@ class Map:
         elif self.head[0] == 2:
             print("################################################## ")
             print("################ MONSTER ATTACKED ################ ")
-            print(self.get_monsters()[self.this_monster[0]].type)
+            print("Fighting " + self.get_monsters()[self.this_monster[0]].long_description)
             print("################################################## ")
         elif self.head[0] == 3:
 
@@ -685,7 +746,7 @@ class Map:
         self.hud(player)
 
     def cleanse_map(self, monsters):
-        # REMOVE MONSTERS BEFOR SWITCHING MAPS:
+        # REMOVE MONSTERS BEFORE SWITCHING MAPS:
 
         for m in range(len(monsters)):
             mon_row = monsters[m].position[0]
@@ -748,7 +809,7 @@ class Map:
                     # player.position[1] = player.position[1]
             else:
                 self.cleanse_map(monsters)
-                self.current_map[0] += 1
+                self.current_map[0] = (self.current_map[0] + 1) % 3
                 player.position[0] = (player.position[0] + 1) % 24
         # CHANGE MAP
 
@@ -917,6 +978,7 @@ class MonSteR:
         self.type = self.m_typ[0]
         self.avatar = self.m_typ[1]
         self.biom = self.m_typ[2]
+        self.long_description = self.m_typ[3]
         self.health = 100 * lvl
         self.inventory= [
                         {'type': 'weapon',
@@ -927,19 +989,27 @@ class MonSteR:
                          'block': 5}]
 
     def m_type(self):
-        return [
-            (self.named(), " §", ".,• º∞*.  xXX"),
-            (self.named(), " £", ".,•º ∞#*  xXX"),
-            (self.named(), " §", ".,•º ∞*:  xXX"),
-            (self.named(), " π", " ,º ∞* .;  xXX"),
-            (self.named(), " £", " .,*;  xXX"),
-            (self.named(), " ¥", ". •*  xXX"),
-            (self.named(), " π", " .,•º∞*;#  xXX"),
-            (self.named(), " ∫", ".,• º∞*;  xXX"),
-            (self.named(), " £", ".,•º∞ *:  xXX"),
-            (self.named(), " ƒ", " .,•º∞*:  xXX"),
-            (self.named(), " §", ".,•º∞*: .  xXX"),
 
+
+
+        name = self.named()
+
+        return [
+
+
+            (name[0], " §", ".,• º∞*.  xXX", name[1]),
+            (name[0], " £", ".,•º ∞#*  xXX", name[1]),
+            (name[0], " §", ".,•º ∞*:  xXX", name[1]),
+            (name[0], " π", " ,º ∞* .;#  xXX", name[1]),
+            (name[0], " £", " .,*;  xXX", name[1]),
+            (name[0], " ¥", ". •* # xXX", name[1]),
+            (name[0], " π", " .,•º∞*;#  xXX", name[1]),
+            (name[0], " ∫", ".,• º∞*;  xXX", name[1]),
+            (name[0], " £", ".,•º∞ *:  xXX", name[1]),
+            (name[0], " ƒ", " .,•º∞*:  xXX", name[1]),
+            (name[0], " §", ".,•º∞*: .  xXX", name[1]),
+
+# Clasic:
             # ('Lizard Man', " §", ".,• º∞*.  xXX"),
             # ('Dragon Breath', " £", ".,•º ∞#*  xXX"),
             # ('Kraken', " §", ".,•º ∞*:  xXX"),
@@ -966,7 +1036,9 @@ class MonSteR:
             'Chainsaw'
         ][randrange(23) % 9]
 
+
     def named(self):
+        """Thanks to Mike for this function"""
         adjectives = choice(['aggravating', 'annoying', 'distressing', 'disturbing', 'inconvenient', 'arduous',
                     'bothersome', 'troublesome', 'irritating', 'troublesome', 'vexing', 'exasperating', 'rebarbative incommodious',
                     'remote', 'vexatious', 'ambitious', 'demanding', 'difficile', 'exacting',
@@ -990,8 +1062,9 @@ class MonSteR:
                         'Mutant Mummer Zombie', 'Spasm Zombie', 'Scourge', 'Wolf-man Warg', 'Water Buffalo', 'Wham-a-Whama Rock Troll',
                         'Woodland Spirit', 'Wraith', 'Wyvern', 'Murder of Crows', 'Lion-Eagle Hybrid', 'Apiarian Phantom'])
         of = choice(['of', 'from'])
-        print('The {} {} {} {}'.format(adjectives, monsterr, of, place_names))
-        return 'The {} {} {} {}'.format(adjectives, monsterr, of, place_names)
+        # print('The {} {} {} {}'.format(adjectives, monsterr, of, place_names))
+        long_name = 'the {} {} {} {}'.format(adjectives, monsterr, of, place_names)
+        return (monsterr, long_name)
 
 class Player:
     def __init__(self, health=100, gold=5, name='Zork', lvl=1, init_position=[12, 12]):
@@ -1152,10 +1225,13 @@ def cast_spell(spell=''):
 monsters = [MonSteR(1), MonSteR(1), MonSteR(1)]
 player = Player()
 
+def get_player():
+    return player
+
 def get_monsters_fn():
     return monsters
 
-map = Map(player, monsters, monster_attack, get_level, get_lives_func, get_monsters_fn)
+map = Map(player, monsters, monster_attack, get_level, get_lives_func, get_monsters_fn, get_player)
 map.mapit(player, monsters)
 
 while True:
