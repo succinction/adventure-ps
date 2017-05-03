@@ -383,7 +383,7 @@ class Map:
 
     def unobstructed(self, arg):
         '''CHECK FOR OBSTRUCTION TO MOVEMENT'''
-        print(arg)
+        # print(arg)
         if arg == " #":
             return False
         else:
@@ -817,7 +817,7 @@ class Map:
         # move(8)
 
         elif arg == 6:  # 'w' | '6' :
-            print(">w player.position[1] : ", player.position[1])
+            # print(">w player.position[1] : ", player.position[1])
             if player.position[1] < 24:
                 temp_x1 += 1
                 terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
@@ -837,7 +837,7 @@ class Map:
 
         elif arg == 4:  # 'e' | '4' :
 
-            print("<e player.position[1] : ", player.position[1])
+            # print("<e player.position[1] : ", player.position[1])
 
             if player.position[1] > 1:
                 temp_x1 += -1
@@ -853,66 +853,70 @@ class Map:
                 self.current_map[1] += -1
                 player.position[1] = 24
 
-        #
-        #
-        # elif arg == 1:  # 'nw' | '1' :
-        #     if player.position[0] > 0:
-        #         temp_y0 += -1
-        #         terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][ (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
-        #         if self.unobstructed( terr ):
-        #             player.position[0] = player.position[0] - 1
-        #
-        #     if player.position[1] < 1 << 23:
-        #         temp_x1 += -1
-        #         terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
-        #                (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
-        #         if self.unobstructed(terr):
-        #             player.position[1] = player.position[1] << 1
-        #     # move(1)
-        #
-        # elif arg == 3:  # 'ne' | '3' :
-        #     if player.position[0] > 0:
-        #         temp_y0 += -1
-        #         terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][ (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
-        #         if self.unobstructed( terr ):
-        #             player.position[0] = player.position[0] - 1
-        #     if player.position[1] > 1:
-        #         temp_x1 += 1
-        #         terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
-        #                (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
-        #         if self.unobstructed( terr ):
-        #             player.position[1] = player.position[1] >> 1
-        #     # move(3)
-        #
-        # elif arg == 7:  # 'sw' | '7' :
-        #     if player.position[0] < 23:
-        #         temp_y0 += 1
-        #         terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
-        #                (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
-        #         if self.unobstructed( terr ):
-        #             player.position[0] = player.position[0] + 1
-        #     if player.position[1] < 1 << 23:
-        #         temp_x1 += -1
-        #         terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
-        #                (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
-        #         if self.unobstructed(terr):
-        #             player.position[1] = player.position[1] << 1
-        #     # move(7)
-        #
-        # elif arg == 9:  # 'se' | '9' :
-        #     if player.position[0] < 23:
-        #         temp_y0 += 1
-        #         terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
-        #                (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
-        #         if self.unobstructed( terr ):
-        #             player.position[0] = player.position[0] + 1
-        #     if player.position[1] > 1:
-        #         temp_x1 += 1
-        #         terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
-        #                (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
-        #         if self.unobstructed( terr ):
-        #             player.position[1] = player.position[1] >> 1
-        #     # move(9)
+
+
+        elif arg == 1:  # 'nw' | '1' :
+            if player.position[0] > 0:
+                temp_y0 += -1
+                terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][ (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
+                if self.unobstructed( terr ):
+                    player.position[0] = player.position[0] - 1
+
+            # if player.position[1] < 1 << 23:
+            if player.position[1] < 24:
+                temp_x1 += -1
+                terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
+                       (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
+                if self.unobstructed(terr):
+                    # player.position[1] = player.position[1] << 1
+                    player.position[1] = player.position[1] - 1
+            # move(1)
+
+        elif arg == 3:  # 'ne' | '3' :
+            if player.position[0] > 0:
+                temp_y0 += -1
+                terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][ (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
+                if self.unobstructed( terr ):
+                    player.position[0] = player.position[0] - 1
+            if player.position[1] > 1:
+                temp_x1 += 1
+                terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
+                       (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
+                if self.unobstructed( terr ):
+                    player.position[1] = player.position[1] + 1
+            # move(3)
+
+        elif arg == 7:  # 'sw' | '7' :
+            if player.position[0] < 23 and player.position[1] < 24:
+                temp_y0 += 1
+                temp_x1 += -1
+                terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
+                       (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
+                if self.unobstructed( terr ):
+                    player.position[0] = player.position[0] + 1
+                    player.position[1] = player.position[1] - 1
+            # if player.position[1] < 24:
+            #     temp_y0 += 1
+            #     temp_x1 += -1
+            #     terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
+            #            (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
+            #     if self.unobstructed(terr):
+            # move(7)
+
+        elif arg == 9:  # 'se' | '9' :
+            if player.position[0] < 23:
+                temp_y0 += 1
+                terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
+                       (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
+                if self.unobstructed( terr ):
+                    player.position[0] = player.position[0] + 1
+            if player.position[1] > 1:
+                temp_x1 += 1
+                terr = self.maps[self.current_map[0]][self.current_map[1]][temp_y0][
+                       (temp_x1 - 1) * 2: ((temp_x1 - 1) * 2) + 2]
+                if self.unobstructed( terr ):
+                    player.position[1] = player.position[1] + 1
+            # move(9)
 
 
         self.monster_go(player, monsters)
@@ -947,7 +951,7 @@ print("################################################## ")
 print("################################################## ")
 print("################## WELCOME TO #################### ")
 print("################################################## ")
-print("##########    PRINT SCREEN ADVENTURE    ########## ")
+print("##########    ESCAPE FROM PHILADELPHIA   ######### ")
 print("################################################## ")
 print("### MOVE WITH ARROW KEYS OR NUMBER PAD + ENTER ### ")
 print("################################################## ")
@@ -997,17 +1001,17 @@ class MonSteR:
         return [
 
 
-            (name[0], " §", ".,• º∞*.  xXX", name[1]),
-            (name[0], " £", ".,•º ∞#*  xXX", name[1]),
-            (name[0], " §", ".,•º ∞*:  xXX", name[1]),
-            (name[0], " π", " ,º ∞* .;#  xXX", name[1]),
-            (name[0], " £", " .,*;  xXX", name[1]),
-            (name[0], " ¥", ". •* # xXX", name[1]),
-            (name[0], " π", " .,•º∞*;#  xXX", name[1]),
-            (name[0], " ∫", ".,• º∞*;  xXX", name[1]),
-            (name[0], " £", ".,•º∞ *:  xXX", name[1]),
-            (name[0], " ƒ", " .,•º∞*:  xXX", name[1]),
-            (name[0], " §", ".,•º∞*: .  xXX", name[1]),
+            (name[0], " §", ".,•º*.  xXX", name[1]),
+            (name[0], " £", ". , • º ∞ *  xXX", name[1]),
+            (name[0], " §", ".,•º*::  xXX", name[1]),
+            (name[0], " π", ",º∞*  .;#  xXX", name[1]),
+            (name[0], " £", ".,*;  xXX", name[1]),
+            (name[0], " ¥", ".•*;  xXX", name[1]),
+            (name[0], " π", " .,•º;#  xXX", name[1]),
+            (name[0], " ∫", ".,•º* .;  xXX", name[1]),
+            (name[0], " £", ".,•º∞*: .  xXX", name[1]),
+            (name[0], " ƒ", ".,•º∞*:  xXX", name[1]),
+            (name[0], " §", ".,•º*: .  xXX", name[1]),
 
 # Clasic:
             # ('Lizard Man', " §", ".,• º∞*.  xXX"),
@@ -1063,7 +1067,7 @@ class MonSteR:
                         'Woodland Spirit', 'Wraith', 'Wyvern', 'Murder of Crows', 'Lion-Eagle Hybrid', 'Apiarian Phantom'])
         of = choice(['of', 'from'])
         # print('The {} {} {} {}'.format(adjectives, monsterr, of, place_names))
-        long_name = 'the {} {} {} {}'.format(adjectives, monsterr, of, place_names)
+        long_name = 'the {} {} \n{} {}'.format(adjectives, monsterr, of, place_names)
         return (monsterr, long_name)
 
 class Player:
@@ -1222,7 +1226,32 @@ def cast_spell(spell=''):
 ###################### //SPELL BOOK  ###################################
 ########################################################################
 
-monsters = [MonSteR(1), MonSteR(1), MonSteR(1)]
+
+print("################################################## ")
+print("################################################## ")
+print("################################################## ")
+print("################################################## ")
+print("################################################## ")
+print("##     ESCAPE FROM PHILADELPHIA    ############### ")
+print("################################################## ")
+print("################################################## ")
+
+how = input("@@#@#@@#@   How many monsters? >>> ")
+if how.isalnum():
+    many = int(how)
+else:
+    many = 3
+
+
+# progression_template = (MonSteR(1), MonSteR(1), MonSteR(1), MonSteR(24), MonSteR(1), MonSteR(70))
+monstrocity = []
+for m in range(many):
+    monstrocity.append(MonSteR(m+1))
+monsters = monstrocity[:]
+
+
+
+
 player = Player()
 
 def get_player():
