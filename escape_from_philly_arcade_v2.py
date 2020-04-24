@@ -1,3 +1,6 @@
+#!/usr/local/bin/python3
+# coding: utf-8
+
 '''
 # /\\\\\\\\    /\\ \\        /\\           /\         /\\\\\\\    /\\\\\\\\       
 # /\\        /\\    /\\   /\\   /\\       /\ \\       /\\    /\\  /\\             
@@ -29,20 +32,19 @@
 #  written by Joseph Howard 2017 succinction@gmail.com   
 '''
 
-
 #   NEXT    
-  # ADD  SHIELD PICKUPS
+# ADD  SHIELD PICKUPS
 #   ADD WALL SPELLS  :  REMOVE WALL, CREATE WALL
-#      AD D MONSTER     S FIGHT   EACH OT HER   !
+#      ADD MONSTERS FIGHT EACH OTHER   !
 
-# d one
-#     Instructi  o  n   screens   before first f  rame
-# mag  ic spells release    d at   certain lev  els (nixt)
-# M  ultiple monsters
-# magic cost gold.
-# Map
-# Monster
-# Player
+# Instruction screens before first frame
+# magic spells released at certain levels (nixt)
+# # done
+# # Multiple monsters
+# # magic cost gold.
+# # Map
+# # Monster
+# # Player
 # # SpellBook
 ## ESCAPE FROM PHILADELPHIA .PY #################################
 
@@ -813,9 +815,9 @@ h:::::h                                           d:::::d
 
         if self.head[0] == 0:
             print("Confront " + self.get_monsters()[self.this_monster[0]].long_description)
-            print("########################################: 123 | 123")
-            print("##     ESCAPE FROM PHILADELPHIA    ###### q*e | 4*6")
-            print("######################################### asd | 789")
+            print("########################################:  w  | 789")
+            print("##     ESCAPE FROM PHILADELPHIA    ###### a*d | 4*6")
+            print("#########################################  s  | 123")
             print("@@@@@@@@@@@@@@@@@@@@@ MAP{}:{} @@@@@@@@@@@@@@@@@@@@@@ ".format(self.current_map[0],
                                                                                  self.current_map[1]))
         elif self.head[0] == 1:
@@ -1205,17 +1207,31 @@ class MonSteR:
 
         return [
 
-            (name[0], " §", ".,•º*.  xXX", name[1]),
-            (name[0], " £", ". ,•º∞*  xXX", name[1]),
-            (name[0], " §", ".,•º*::  xXX", name[1]),
-            (name[0], " π", ",º∞# .* xXX", name[1]),
-            (name[0], " £", ".,*;  xXX", name[1]),
-            (name[0], " ¥", ".•*;  xXX", name[1]),
-            (name[0], " @", "  .. ,•º;.  xXX", name[1]),
-            (name[0], " ∫", ".,•º* .;  xXX", name[1]),
-            (name[0], " £", ".,•º∞*: .  xXX", name[1]),
-            (name[0], " ƒ", ".,•º∞*:  xXX", name[1]),
-            (name[0], " §", ".,•º*: .  xXX", name[1]),
+            # enumerated
+            (name[0], " 1", ".,•º*.  xXX", name[1]),
+            (name[0], " 2", ". ,•º∞*  xXX", name[1]),
+            (name[0], " 3", ".,•º*::  xXX", name[1]),
+            (name[0], " 4", ",º∞# .* xXX", name[1]),
+            (name[0], " 5", ".,*;  xXX", name[1]),
+            (name[0], " 6", ".•*;  xXX", name[1]),
+            (name[0], " 7", "  .. ,•º;.  xXX", name[1]),
+            (name[0], " 8", ".,•º* .;  xXX", name[1]),
+            (name[0], " 9", ".,•º∞*: .  xXX", name[1]),
+            (name[0], " 0", ".,•º∞*:  xXX", name[1]),
+            (name[0], " @", ".,•º*:x .  xXX", name[1]),
+
+            # 2017
+            # (name[0], " §", ".,•º*.  xXX", name[1]),
+            # (name[0], " £", ". ,•º∞*  xXX", name[1]),
+            # (name[0], " §", ".,•º*::  xXX", name[1]),
+            # (name[0], " π", ",º∞# .* xXX", name[1]),
+            # (name[0], " £", ".,*;  xXX", name[1]),
+            # (name[0], " ¥", ".•*;  xXX", name[1]),
+            # (name[0], " @", "  .. ,•º;.  xXX", name[1]),
+            # (name[0], " ∫", ".,•º* .;  xXX", name[1]),
+            # (name[0], " £", ".,•º∞*: .  xXX", name[1]),
+            # (name[0], " ƒ", ".,•º∞*:  xXX", name[1]),
+            # (name[0], " §", ".,•º*: .  xXX", name[1]),
 
             # Clasic:
             # ('Lizard Man', " §", ".,• º∞*.  xXX"),
@@ -1276,7 +1292,9 @@ class MonSteR:
              'Courier of Danger',
              'Mutant Mummer Zombie', 'Spasm Zombie', 'Scourge', 'Wolf-man Warg', 'Water Buffalo',
              'Wham-a-Whama Rock Troll',
-             'Woodland Spirit', 'Wraith', 'Wyvern', 'Murder of Crows', 'Lion-Eagle Hybrid', 'Apiarian Phantom'])
+             'Woodland Spirit', 'Wraith', 'Wyvern', 'Murder of Crows', 'Lion-Eagle Hybrid', 'Apiarian Phantom',
+             'Lizard Man','Dragon Breath','Kraken','Mage', 'Sith Lord','Skeleton','Wizard','Lock Ness','T-Rex',"C'Thulu",'Hydra'
+             ])
         of = choice(['of', 'from'])
         # print('The {} {} {} {}'.format(adjectives, monsterr, of, place_names))
         levl = "level {}".format(self.level)
@@ -1315,7 +1333,7 @@ class Player:
         self.gold = gold  # 5
         self.inventory = self.equip()
         self.level = lvl
-        self.avatar = " †"
+        self.avatar = " Q"
         self.trail = "  "
 
     def equip(self):
@@ -1660,30 +1678,42 @@ print("################## WELCOME TO #################### ")
 print("################################################## ")
 print("##########    ESCAPE FROM PHILADELPHIA   ######### ")
 print("################################################## ")
-print("### MOVE WITH ARROW KEYS OR NUMBER PAD + ENTER ### ")
 print("################################################## ")
-print("##### ATTACK WITH ENTER WHEN NEXT TO MONSTER ##### ")
 print("################################################## ")
-print("########## HEAL WITH \"h [number]\" + ENTER ######## ")
+print("### MOVE WITH wasd KEYS OR NUMBER PAD + ENTER #### ")
 print("################################################## ")
-print(" LEARN TO CAST SPELLS WITH \"cast [spell]\" + ENTER  ")
+print("################   w   ########  789  ############ ")
+print("### MOVE WITH  #  a d  #  OR  #  4 6  ############ ")
+print("################   s   ########  123  ############ ")
+print("################################################## ")
+print("########## MACS MAY USE ARROW KEYS ############### ")
+print("################################################## ")
+print("################################################## ")
+print("##    ATTACK WITH ENTER WHEN NEXT TO MONSTER    ## ")
+print("################################################## ")
+print("######## HEAL WITH \"h [number]\" + ENTER ######## ")
+print("################################################## ")
+print("LEARN TO CAST SPELLS WITH \"cast [spell]\" + ENTER ")
 print("################################################## ")
 print("# EXAMLPE SPELLS ################################# ")
 print("# SPELLS:>>> heal 99  heals 99 costs 99 gold ##### ")
-print("# SPELLS:>>> cast live adds 1 life costs 1000 gold")
+print("# SPELLS:>>> cast live adds 1 life costs 1000 gold ")
 print("################################################## ")
 print("# SPELLS:>>> cast legend ######################### ")
 print("# SPELLS:>>> cast magic  ######################### ")
 print("################################################## ")
 print("################################################## ")
 print("################################################## ")
+print("####   ESCAPE FROM PHILADELPHIA    ############### ")
+print("################################################## ")
+print("###### WRITTEN BY JOSEPH HOWARD ################## ")
+print("################################################## ")
+print("################# USE PYTHON3 #################### ")
+print("###~$ python3 printscreen_adventure.py ########### ")
 print("################################################## ")
 print("################################################## ")
-print("################################################## ")
-print("################################################## ")
-print("##     ESCAPE FROM PHILADELPHIA    ############### ")
-print("################################################## ")
-print("########WRITTEN BY JOSEPH HOWARD################## ")
+print("#### YOU ARE:       Q        ##################### ")
+print("#### MONSTERS ARE:  1 2 3 4 5 6 7 8 9 0 @   ###### ")
 print("################################################## ")
 
 
@@ -1760,8 +1790,8 @@ wwwwwww           wwwww           wwwwwwwh::::h hhhhh       iiiiiii  l::::l     
                                                                                                                                                                              
 '''
 while True:
-    command = input("Type Command: ( n s e w a(t)tack cast heal x:exit )\n>>> ")
-    if command[:2] == 'at' or 't' == command[:1] or command[:1] == 'undefined' or ' ' == command[:1] or '' == command[:1]:
+    command = str(input("Type Command: ( a s d w ; a(t)tack ; cast heal ; x:exit )\n>>> "))
+    if command[:2] == 'at' or 't' == command[:1] or command[:1] == ' ' or ' ' == command[:1] or '' == command[:1]:
         if check_proximity():
             player_attack(command[command.find(" ") + 1:])
         else:
@@ -1803,4 +1833,3 @@ while True:
                 map.move(9, player, monsters)
 
 #####@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@©2017JosephHoward
-
