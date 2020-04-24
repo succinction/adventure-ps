@@ -1790,7 +1790,7 @@ wwwwwww           wwwww           wwwwwwwh::::h hhhhh       iiiiiii  l::::l     
                                                                                                                                                                              
 '''
 while True:
-    command = str(input("Type Command: ( a s d w ; a(t)tack ; cast heal ; x:exit )\n>>> "))
+    command = input("Type Command: ( a s d w ; a(t)tack ; cast heal ; x:exit )\n>>> ")
     if command[:2] == 'at' or 't' == command[:1] or command[:1] == ' ' or ' ' == command[:1] or '' == command[:1]:
         if check_proximity():
             player_attack(command[command.find(" ") + 1:])
