@@ -267,7 +267,7 @@ class Map:
             mp.append(" . . . . . . . # . . . . . . . . . . . . . . . .")
             mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
             mp.append(" . . . . . . . . . . . . . . . . . # . . . . . .")
-            mp.append(" . . . . . . . # . # # # # # # # . # . . . . . .")
+            mp.append(" . . . . . . . # . # # # # # # # . # . . . . # #")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . .")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . .")
             mp.append(" . . . . . . . . . . . . . . . . . . . . . . . .")
@@ -281,22 +281,22 @@ class Map:
             mp.append(" . . . . . . . . . # . . . . . . . . . . . . . .")
             mp.append(" . . . . . . . . . # . . . . . . . . . . . . . .")
             mp.append(" . . . . . . . # # # # # # . # # # # . . . . . .")
-            mp.append(" . . . . . . . # . . . . . . . . . # # # # # # .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . ; * ; ; .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . ; * ; ; .")
-            mp.append(" . . . . . . . . . . . . . . . . . # . ; * ; ; .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . * * * * .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . * * * * .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . * * * * .")
-            mp.append(" # # # # # # # # . . . . . . . . . # . * * * * .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . * * * * .")
-            mp.append(" . . . . . . . # # # # # . # # # # # . * * * * .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . .")
-            mp.append(" . . . . . . . . . . . . . . . . . . . . . . . .")
-            mp.append(" . . . . . . . . . . . . . . . . . . . . . . . .")
+            mp.append(" . . . . . . . # . . . . . . . . . # # # # # # #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . ; * ; ; #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . ; * ; ; #")
+            mp.append(" . . . . . . . . . . . . . . . . . # . ; * ; ; #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . * * * * #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . * * * * #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . * * * * #")
+            mp.append(" # # # # # # # # . . . . . . . . . # . * * * * #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . * * * * #")
+            mp.append(" . . . . . . . # # # # # # # # # # # X * * * * #")
+            mp.append(" . . . . . . . # . . . . . . . . . # X X X X X .")
+            mp.append(" . . . . . . . # . . . . . . . . . # # # # # # #")
+            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
+            mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
+            mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
             mp.append(" # # # # # # # # # # # # # # # # # # # # # # # #")
 
         if x == 2:
@@ -358,22 +358,22 @@ class Map:
             mp = []
             mp.append(" . . . . . . . . . # . . . . . . . . . . . . . #")
             mp.append(" . . . . . . . . . # . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . . . # . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . . . # . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . . . # . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . # # # # # # # # # # # . . . . . #")
-            mp.append(" . . . . . . . # # # # # # # # # # # . . . . . #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . X . . #")
-            mp.append(" . . . . . . . # . . . . . . # . . # # # # # # #")
-            mp.append(" . . . . . . . # . . . . . . # . . # # # # # # #")
-            mp.append(" . . . . . . . # . . . . . . # X . # . x x x x #")
-            mp.append(" . . . . . . . # . . . . . . # X . # . x x x x #")
-            mp.append(" . . . . . . . # # # # # # . # # # # . x x x x #")
-            mp.append(" . . . . . . . # . . . . . . # X . # . x x x x #")
-            mp.append(" . . . * * * * # . . . . . . # . . # . x x x x #")
-            mp.append(" . . . * * * * # . . . . . . # . . # . x x x x #")
-            mp.append(" . . . * * * * # . . . . . . . . . # . x x x x #")
+            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . #")
+            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . #")
+            mp.append(" # . . . . . . . . # . . . . . . . . . . . . . #")
+            mp.append(" # . . . . . . # . . . . . . . . . # . . . . . #")
+            mp.append(" . # . . . . . # # # # # # # # # # # . . . . . #")
+            mp.append(" # . . . . . . # # # # # # # # # # # . . . . . #")
+            mp.append(" # . . . . . . # . . . . . . . . . # . . X . . #")
+            mp.append(" # . . . . . . # . . . . . . # . . # # # # # # #")
+            mp.append(" # . . . . . . # . . . . . . # . . # # # # # # #")
+            mp.append(" # . . . . . . # . . . . . . # X . # . x x x x #")
+            mp.append(" # . . . . . . # . . . . . . # X . # . x x x x #")
+            mp.append(" # . . . . . . # # # # # # . # # # # . x x x x #")
+            mp.append(" # . . . . . . # . . . . . . # X . # . x x x x #")
+            mp.append(" # . . * * * * # . . . . . . # . . # . x x x x #")
+            mp.append(" # . . * * * * # . . . . . . # . . # . x x x x #")
+            mp.append(" # . . * * * * # . . . . . . . . . # . x x x x #")
             mp.append(" # # # # # # # # . . . . . . . . . # . x x x x #")
             mp.append(" . . . . # . . # . . . . . . # X . # . x x x x #")
             mp.append(" . . . . # . . # . . . . . . # X . # . x x x x #")
@@ -752,9 +752,10 @@ h:::::h                                           d:::::d
         '''
         # print("################################################# ")
         print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ")
+        print("You are:  {}   x: {} y: {}   Level: {}  Lives: {}   ".format(player.avatar, player.position[1], player.position[0], self.level_fn(), self.get_lives()))
 
         self.frame_i[0] += 1
-        print('@@@@@@ Frame # {}  Level # {}   Lives : {} '.format(self.frame_i[0], self.level_fn(), self.get_lives()))
+        # print('@@@@@@ Frame # {}  Level # {}   Lives : {} '.format(self.frame_i[0], self.level_fn(), self.get_lives()))
         print("LEFT : {} {}  HEALTH: {} {}".format(player.inventory[0]['name'], player.inventory[0]['damage'],
                                                     player.health,
                                                     self.message(self.message_key[2][:3],
@@ -811,7 +812,7 @@ h:::::h                                           d:::::d
         print(self.story_line(self.message_key[3]))
 # MOVE TO HUD
         # self.frame_i[0] += 1
-        # print('Frame # {}  Level # {}   Lives : {} '.format(self.frame_i[0], self.level_fn(), self.get_lives()))
+        print('Frame # {}  Level # {}   Lives : {} '.format(self.frame_i[0], self.level_fn(), self.get_lives()))
 
         if self.head[0] == 0:
             print("Confront " + self.get_monsters()[self.this_monster[0]].long_description)
@@ -1790,7 +1791,8 @@ wwwwwww           wwwww           wwwwwwwh::::h hhhhh       iiiiiii  l::::l     
                                                                                                                                                                              
 '''
 while True:
-    command = input("Type Command: ( a s d w ; a(t)tack ; cast heal ; x:exit )\n>>> ")
+    command = input("Type Command:>>> ")
+    # command = input("Type Command: ( a s d w ; a(t)tack ; cast heal ; x:exit )\n>>> ")
     if command[:2] == 'at' or 't' == command[:1] or command[:1] == ' ' or ' ' == command[:1] or '' == command[:1]:
         if check_proximity():
             player_attack(command[command.find(" ") + 1:])
