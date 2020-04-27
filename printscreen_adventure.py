@@ -286,17 +286,17 @@ class Map:
             mp.append(" . . . . . . . # . . . . . . . . . # . ; * ; ; #")
             mp.append(" . . . . . . . # . . . . . . . . . # . ; * ; ; #")
             mp.append(" . . . . . . . . . . . . . . . . . # . ; * ; ; #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . * * * * #")
+            mp.append(" . . . . . . . # . . . . X . . . . # . * * * * #")
             mp.append(" . . . . . . . # . . . . . . . . . # . * * * * #")
             mp.append(" . . . . . . . # . . . . . . . . . # . * * * * #")
             mp.append(" # # # # # # # # . . . . . . . . . # . * * * * #")
             mp.append(" . . . . . . . # . . . . . . . . . # . * * * * #")
-            mp.append(" . . . . . . . # # # # # # # # # # # X * * * * #")
-            mp.append(" . . . . . . . # . . . . . . . . . # X X X X X .")
-            mp.append(" . . . . . . . # . . . . . . . . . # # # # # # #")
-            mp.append(" . . . . . . . # . . . . . . . . . # . . . . . #")
-            mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
-            mp.append(" . . . . . . . . . . . . . . . . . . . . . . . #")
+            mp.append(" . . . . . . . # # # # # # # # # # # x * * * * #")
+            mp.append(" . . . . . . . # . . . . . . . . . # X X X X X X")
+            mp.append(" . . . . . . . # . . . . . . . # # # # # # # # #")
+            mp.append(" . . . . . . . # . X X . . . . # . # x x x x x #")
+            mp.append(" . . . . . . . # . X X . . . . # . # X X X X x #")
+            mp.append(" . . . . . . . # . . . . . . . # . # . . . . . #")
             mp.append(" # # # # # # # # # # # # # # # # # # # # # # # #")
 
         if x == 2:
@@ -752,18 +752,19 @@ h:::::h                                           d:::::d
         '''
         # print("################################################# ")
         print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ")
-        print("You are:  {}   x: {} y: {}   Level: {}  Lives: {}   ".format(player.avatar, player.position[1], player.position[0], self.level_fn(), self.get_lives()))
+        print("You are: {}  x: {} y: {}   Level: {}  Lives: {}   ".format(player.avatar, player.position[1], player.position[0], self.level_fn(), self.get_lives()))
 
-        self.frame_i[0] += 1
+
+        print("LEFT : {}({})   GOLD : {} ".format(player.inventory[1]['name'], player.inventory[1]['block'],
+                                                    player.gold))
+        # self.frame_i[0] += 1
         # print('@@@@@@ Frame # {}  Level # {}   Lives : {} '.format(self.frame_i[0], self.level_fn(), self.get_lives()))
-        print("LEFT : {} {}  HEALTH: {} {}".format(player.inventory[0]['name'], player.inventory[0]['damage'],
+        print("RIGHT: {} {}    HEALTH : {} {}".format(player.inventory[0]['name'], player.inventory[0]['damage'],
                                                     player.health,
                                                     self.message(self.message_key[2][:3],
                                                                  self.message_key[2][self.message_key[2].find(' '):])))
 
 
-        print("RIGHT: {}({})    GOLD  : {} ".format(player.inventory[1]['name'], player.inventory[1]['block'],
-                                                    player.gold))
         # print(":POTION ^(f)                  (r)^ STAFF:")
 
         damage_report = "(-{})".format(damage) if damage > 0 else ""
@@ -811,7 +812,7 @@ h:::::h                                           d:::::d
 
         print(self.story_line(self.message_key[3]))
 # MOVE TO HUD
-        # self.frame_i[0] += 1
+        self.frame_i[0] += 1
         print('Frame # {}  Level # {}   Lives : {} '.format(self.frame_i[0], self.level_fn(), self.get_lives()))
 
         if self.head[0] == 0:
@@ -819,7 +820,7 @@ h:::::h                                           d:::::d
             print("########################################:  w  | 789")
             print("##     ESCAPE FROM PHILADELPHIA    ###### a*d | 4*6")
             print("#########################################  s  | 123")
-            print("@@@@@@@@@@@@@@@@@@@@@ MAP{}:{} @@@@@@@@@@@@@@@@@@@@@@ ".format(self.current_map[0],
+            print("@@@@@@@@@@@@@@@@@@@@ MAP {}:{} @@@@@@@@@@@@@@@@@@@@ ".format(self.current_map[0],
                                                                                  self.current_map[1]))
         elif self.head[0] == 1:
             print("################################################## ")
@@ -1219,7 +1220,7 @@ class MonSteR:
             (name[0], " 8", ".,•º* .;  xXX", name[1]),
             (name[0], " 9", ".,•º∞*: .  xXX", name[1]),
             (name[0], " 0", ".,•º∞*:  xXX", name[1]),
-            (name[0], " @", ".,•º*:x .  xXX", name[1]),
+            (name[0], " @", ".,•º*;:x .  xXX", name[1]),
 
             # 2017
             # (name[0], " §", ".,•º*.  xXX", name[1]),
@@ -1246,7 +1247,7 @@ class MonSteR:
             # ('T-Rex', " £", ".,•º∞ *:  xXX"),
             # ("C'Thulu", " ƒ", " .,•º∞*:  xXX"),
             # ('Hydra', " §", ".,•º∞*: .  xXX")
-        ][randrange(25) % 10]
+        ][randrange(25) % 11]
 
     def w_name(self):
         return [
