@@ -652,8 +652,10 @@ class Map:
         ##############################################
 
         # terr_prog = ".,•º∞*"
-        terr_prog = monsters[0].biom
+        terr_prog = monsters[m].biom
+        # print('terr_prog : "{}" '.format(terr_prog))
         # print('terr : "{}" '.format(terr))
+
         newrow += " " + terr_prog[(terr_prog.find(terr[1]) + 1) % len(terr_prog)]
         newrow += self.maps[self.current_map[0]][self.current_map[1]][mon_row][(mon_colm) * 2:]
         self.maps[self.current_map[0]][self.current_map[1]][mon_row] = newrow
@@ -1211,8 +1213,8 @@ class MonSteR:
 
             # enumerated
             (name[0], " 1", ".,•º*.  xXX", name[1]),
-            (name[0], " 2", ". ,•º∞*  xXX", name[1]),
-            (name[0], " 3", ".,•º*::  xXX", name[1]),
+            (name[0], " 2", ".: ,•º∞*  xXX", name[1]),
+            (name[0], " 3", ".,•º*:  xXX", name[1]),
             (name[0], " 4", ",º∞# .* xXX", name[1]),
             (name[0], " 5", ".,*;  xXX", name[1]),
             (name[0], " 6", ".•*;  xXX", name[1]),
@@ -1220,7 +1222,7 @@ class MonSteR:
             (name[0], " 8", ".,•º* .;  xXX", name[1]),
             (name[0], " 9", ".,•º∞*: .  xXX", name[1]),
             (name[0], " 0", ".,•º∞*:  xXX", name[1]),
-            (name[0], " @", ".,•º*;:x .  xXX", name[1]),
+            (name[0], " @", "..;,xX; :;", name[1]),
 
             # 2017
             # (name[0], " §", ".,•º*.  xXX", name[1]),
