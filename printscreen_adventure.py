@@ -1037,17 +1037,17 @@ class MonSteR:
             # (name[0], " @", "..:#" + common, name[1], [walls, spaces]),
  
             # # enumerated
-            # (name[0], " 1", ".,•º*.  xXX", name[1]),
-            # (name[0], " 2", ".: ,•º∞*  xXX", name[1]),
-            # (name[0], " 3", ".,•º*:  xXX", name[1]),
-            # (name[0], " 4", ",º∞# .* xXX", name[1]),
-            # (name[0], " 5", ".,*;  xXX", name[1]),
-            # (name[0], " 6", ".•*;  xXX", name[1]),
-            # (name[0], " 7", "  .. ,•º;.  xXX", name[1]),
-            # (name[0], " 8", ".,•º* .;  xXX", name[1]),
-            # (name[0], " 9", ".,•º∞*: .  xXX", name[1]),
-            # (name[0], " 0", ".,•º∞*:  xXX", name[1]),
-            # (name[0], " @", "..;,xX; :;", name[1]),
+            (name[0], " 1", ".,•º*.  xXX", name[1], [walls, spaces]),
+            (name[0], " 2", ".: ,•º∞*  xXX", name[1], [walls, spaces]),
+            (name[0], " 3", ".,•º*:  xXX", name[1], [walls, spaces]),
+            (name[0], " 4", ",º∞# .* xXX", name[1], [walls, spaces]),
+            (name[0], " 5", ".,*;  xXX", name[1], [walls, spaces]),
+            (name[0], " 6", ".•*;  xXX", name[1], [walls, spaces]),
+            (name[0], " 7", "  .. ,•º;.  xXX", name[1], [walls, spaces]),
+            (name[0], " 8", ".,•º* .;  xXX", name[1], [walls, spaces]),
+            (name[0], " 9", ".,•º∞*: .  xXX", name[1], [walls, spaces]),
+            (name[0], " 0", ".,•º∞*:  xXX", name[1], [walls, spaces]),
+            (name[0], " @", "..;,xX; :;", name[1], [walls, spaces]),
  
             # 2017
             (name[0], " §", ".,•º*.  xXX" + common, name[1], [walls]),
