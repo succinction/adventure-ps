@@ -386,7 +386,6 @@ class Map:
  
     def monster_go(self, player, monsters):
         '''MONSTERS TURN DETERMINATION'''
-        # fizz = lambda v: v
         self.message_key[1] = ''
         self.message_key[2] = ''
         self.message_key[3] = ''
@@ -429,14 +428,12 @@ class Map:
         elif monsters[m].position[0] > 22:
             monsters[m].position[0] = 22
         else:
-            # monsters[m].position[0] += choice([-1, 0, 1])
             proposed0 = monsters[m].position[0] + rand_horizontal
         if monsters[m].position[1] < 2:
             monsters[m].position[1] = 2
         elif monsters[m].position[1] > 22:
             monsters[m].position[1] = 22
         else:
-            # monsters[m].position[1] += choice([-1, 0, 1])
             proposed1 = monsters[m].position[1] + rand_verticle
         #
  
@@ -995,9 +992,7 @@ class Map:
 MONSTER CLASS
 '''
 class MonSteR:
-    # class MonSteR:
     def __init__(self, lvl):
-        # Monster.__init__(self)
         self.mode = monster_modes[0]
         self.level = lvl
         self.m_typ = self.m_type()
@@ -1487,28 +1482,20 @@ while True:
                 if input('      Are you sure you want to quit? (c) ') == 'c':
                     quit()
             if command[i] == 's' or '2' == command[i] or 'B' == command[i]:
-                # print_legend()
                 map.move(2, player, monsters)
             elif command[i] == 'w' or '8' == command[i] or 'A' == command[i]:
-                # print_legend()
                 map.move(8, player, monsters)
             elif command[i] == 'd' or '6' == command[i] or 'C' == command[i]:
-                # print_legend()
                 map.move(6, player, monsters)
             elif command[i] == 'a' or '4' == command[i] or 'D' == command[i]:
-                # print_legend()
                 map.move(4, player, monsters)
             elif command[i] == '1':
-                # print_legend()
                 map.move(1, player, monsters)
             elif command[i] == '3':
-                # print_legend()
                 map.move(3, player, monsters)
             elif command[i] == '7' or 'a' == command[i]:
-                # print_legend()
                 map.move(7, player, monsters)
             elif command[i] == '9' or 'd' == command[i]:
-                # print_legend()
                 map.move(9, player, monsters)
  
 #####@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@©2017JosephHoward
